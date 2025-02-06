@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Pegawai KAI</title>
+    <link rel="icon" href="logo-kai.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: center;
+      }
+      thead {
+        background-color: #000;
+        color: #f2f2f2;
+      }
+      tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .badge {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: #000;
+      }
+      .direktur {
+        background-color: #ffcccc;
+      }
+      .manager {
+        background-color: #cce5ff;
+      }
+      .sekretaris {
+        background-color: #d4edda;
+      }
+      .humas {
+        background-color: #ffe5b4;
+      }
+      .it-support {
+        background-color: #fff3cd;
+      }
+      .header-title {
+        background: linear-gradient(to right, #007bff, #ff7f50);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .header-title img {
+        margin-right: 10px;
+      }
+      footer {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="header-title">
+      <img src="logo-kai.png" alt="Logo KAI" width="80" height="50" />
+      Data Pegawai KAI
+    </h1>
+    <div class="table-responsive">
+      <table id="pegawaiTable" class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th width="50px">No</th>
+            <th>Nama</th>
+            <th>Jabatan</th>
+            <th width="50px">Umur</th>
+            <th>Alamat</th>
+            <th>Gaji</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <footer>
+      &copy; 2025 PT Kereta Api Indonesia & Azhar49 Project. All rights
+      reserved.
+    </footer>
+
+    <script>
+      const pegawai = [
+        {
+          no: "1",
+          nama: "Adi Pratama",
+          jabatan: "Direktur",
+          umur: 40,
+          alamat: "Daop 1 Jakarta",
+          gaji: "Rp 45.000.000",
+        },
+        {
+          no: "2",
+          nama: "Budi Santoso",
+          jabatan: "Manager",
+          umur: 28,
+          alamat: "Daop 3 Cirebon",
+          gaji: "Rp 25.000.000",
+        },
+        {
+          no: "3",
+          nama: "Citra Dewi",
+          jabatan: "Sekretaris",
+          umur: 25,
+          alamat: "Daop 2 Bandung",
+          gaji: "Rp 10.500.000",
+        },
+        {
+          no: "4",
+          nama: "Dika Saputra",
+          jabatan: "Humas",
+          umur: 30,
+          alamat: "Daop 5 Purwokerto",
+          gaji: "Rp 9.000.000",
+        },
+        {
+          no: "5",
+          nama: "Evan Permana",
+          jabatan: "IT Support",
+          umur: 35,
+          alamat: "Daop 4 Semarang",
+          gaji: "Rp 5.000.000",
+        },
+      ];
+
+      const tableBody = document.querySelector("#pegawaiTable tbody");
+
+      pegawai.forEach((p) => {
+        let jabatanClass = "";
+        switch (p.jabatan.toLowerCase()) {
+          case "direktur":
+            jabatanClass = "direktur";
+            break;
+          case "manager":
+            jabatanClass = "manager";
+            break;
+          case "sekretaris":
+            jabatanClass = "sekretaris";
+            break;
+          case "humas":
+            jabatanClass = "humas";
+            break;
+          case "it support":
+            jabatanClass = "it-support";
+            break;
+        }
+
+        const row = `<tr>
+                <td>${p.no}</td>
+                <td>${p.nama}</td>
+                <td><span class="badge ${jabatanClass}">${p.jabatan}</span></td>
+                <td>${p.umur}</td>
+                <td>${p.alamat}</td>
+                <td>${p.gaji}</td>
+            </tr>`;
+        tableBody.innerHTML += row;
+      });
+    </script>
+  </body>
+</html>
